@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import PlaceList from './components/PlaceList';
-import places from './data/places';
+import React from 'react'
+import { Route } from 'react-router'
+import { Link } from 'react-router-dom'
+import { Container, Menu } from 'semantic-ui-react'
+import PlaceListPage from './components/PlaceListPage'
+import PlaceDetailPage from './components/PlaceDetailPage'
 
-class App extends Component {
-  state = {
-    places
-  }
+const App = () => (
+  <div>
+    <Menu>
+      <Container>
+        <Menu.Item as={Link} to="/">Veganosti</Menu.Item>
+      </Container>
+    </Menu>
+    <Route path="/" exact component={PlaceListPage}/>
+    <Route path="/:id" exact component={PlaceDetailPage}/>
+  </div>
+)
 
-  render() {
-    return (
-      <div>
-        <h1>DBegano | Veganosti | Beganosti</h1>
-        <PlaceList places={this.state.places} />
-      </div>
-    );
-  }
-}
-
-export default App;
+export default App
