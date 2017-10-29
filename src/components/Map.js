@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import {
   withScriptjs,
   withGoogleMap,
@@ -18,4 +19,10 @@ const Map = withScriptjs(withGoogleMap((props) =>
   </GoogleMap>,
 ))
 
-export default Map
+function mapStateToProps(state) {
+  return {
+    places: state.places
+  }
+}
+
+export default connect(mapStateToProps)(Map)

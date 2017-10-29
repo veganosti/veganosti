@@ -1,36 +1,42 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Container, Image, Header } from 'semantic-ui-react';
-import places from '../data/places';
+import React from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { Container, Image, Header } from 'semantic-ui-react'
 
-class PlaceDetailPage extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      place: places[props.match.params.id - 1]
-    }
-  }
+const PlaceDetailPage = ({places, match}) => {
+  const place = places[match.params.id - 1]
 
-  render() {
-    return (
-      <Container text>
-        <Header>{this.state.place.name}</Header>
-        <Image fluid src="http://via.placeholder.com/350x150"/>
-        <div>{this.state.place.description}</div>
-        <div>{this.state.place.address}</div>
-        <div>{this.state.place.phone}</div>
-        <div>{this.state.place.type}</div>
-      </Container>
-    )
-  }
+  return (
+    <Container text>
+      <Header>{place.name}</Header>
+      <Image fluid src="http://via.placeholder.com/350x150"/>
+      <div>{place.description}</div>
+      <div>{place.address}</div>
+      <div>{place.phone}</div>
+      <div>{place.type}</div>
+    </Container>
+  )
 }
 
 PlaceDetailPage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-};
+  places: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      address: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+}
 
-export default PlaceDetailPage;
+function mapStateToProps (state) {
+  return {
+    places: state.places,
+  }
+}
+
+export default connect(mapStateToProps)(PlaceDetailPage)
