@@ -5,11 +5,11 @@ import { Marker } from 'react-google-maps'
 import MarkerInfoWindow from './MakerInfoWindow'
 import * as actions from '../redux/actions/places'
 
-const MapMarker = ({place, selectPlace}) =>(
+const MapMarker = ({place, selectedPlaceId, selectPlace}) =>(
       <Marker position={{lat: place.lat, lng: place.lng}}
               icon={`img/markers/${place.type.toLowerCase()}.png`}
               onClick={() => selectPlace(place)}>
-        {place.selected && <MarkerInfoWindow place={place}/>}
+        {place.id === selectedPlaceId && <MarkerInfoWindow place={place}/>}
       </Marker>
     )
 
@@ -22,7 +22,18 @@ MapMarker.propTypes = {
     lng: PropTypes.number.isRequired,
     selected: PropTypes.bool,
   }).isRequired,
+  selectedPlaceId: PropTypes.number,
   selectPlace: PropTypes.func.isRequired
+}
+
+MapMarker.defaultProps = {
+  selectedPlaceId: null
+}
+
+function mapStateToProps(state) {
+  return {
+    selectedPlaceId: state.selectedPlaceId
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -31,4 +42,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(MapMarker)
+export default connect(mapStateToProps, mapDispatchToProps)(MapMarker)

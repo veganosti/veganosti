@@ -8,15 +8,12 @@ export default (state = {}, action = {}) => {
     case SET_PLACES:
       return {
         ...state,
-        places: action.places.map(place => ({...place, selected: false})),
+        places: action.places,
       }
     case SELECT_PLACE:
       return {
         ...state,
-        places: state.places.map(
-          place => (place.id === action.place.id)
-            ? {...place, selected: true} : {...place, selected: false},
-        ),
+        selectedPlaceId: action.place.id
       }
     case SET_PLACE_TYPE_FILTER:
       return {
