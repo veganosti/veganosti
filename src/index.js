@@ -7,10 +7,11 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import store from './redux/store'
-import { setPlaces } from './redux/actions/places'
+import { setPlaces, setPlaceTypeFilter } from './redux/actions/places'
 import places from './data/places'
 
 store.dispatch(setPlaces(places));
+store.dispatch(setPlaceTypeFilter(['veganos', 'vegetarianos']));
 
 ReactDOM.render(
   <Provider store={store}>

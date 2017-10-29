@@ -1,4 +1,4 @@
-import { SELECT_PLACE, SET_PLACES } from './types'
+import { SELECT_PLACE, SET_PLACE_TYPE_FILTER, SET_PLACES } from './types'
 
 export const setPlaces = (places) => (
   {
@@ -11,5 +11,12 @@ export const selectPlace = (place) => (
   {
     type: SELECT_PLACE,
     place,
+  }
+)
+
+export const setPlaceTypeFilter = (placeTypeFilter) => (
+  {
+    type: SET_PLACE_TYPE_FILTER,
+    placeTypeFilter,
   }
 )
