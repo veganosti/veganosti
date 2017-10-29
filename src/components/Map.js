@@ -1,16 +1,19 @@
 import React from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
 } from 'react-google-maps'
 import MapMarker from './MapMarker'
+import {
+  filteredPlacesSelector,
+} from '../redux/selectors/places'
 
 const Map = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={15}
-    defaultCenter={{lat: props.places[0].lat, lng: props.places[0].lng}}
+    defaultCenter={{lat: 43.322451, lng: -1.9740237}}
     defaultOptions={{disableDefaultUI: true}}
   >
     {props.places.map(place => (
@@ -19,9 +22,9 @@ const Map = withScriptjs(withGoogleMap((props) =>
   </GoogleMap>,
 ))
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
-    places: state.places
+    places: filteredPlacesSelector(state),
   }
 }
 

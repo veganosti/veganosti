@@ -1,3 +1,13 @@
-.ui.menu {
-  margin-bottom: 0;
+#map {
+  margin-top: -14px;
+}
+
+#place_filter {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+}
+
+#place_filter label {
+  display: block;
 }

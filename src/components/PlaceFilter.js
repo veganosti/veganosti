@@ -1,46 +1,48 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Segment, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { setPlaceTypeFilter } from '../redux/actions/places'
 
 class PlaceFilter extends Component {
 
-  onChange = (e) => {
+  onChange = (e, { name }) => {
     const placeTypeFilter = this.props.placeTypeFilter.concat();
-    const index = placeTypeFilter.indexOf(e.target.name);
+    const index = placeTypeFilter.indexOf(name);
     if (index !== -1) {
       placeTypeFilter.splice(index, 1);
     } else {
-      placeTypeFilter.push(e.target.name);
+      placeTypeFilter.push(name);
     }
     this.props.setPlaceTypeFilter(placeTypeFilter)
   };
 
   render () {
     return (
-      <form>
-        <label htmlFor="veganos">Veganos
-          <input
-            type="checkbox"
-            name="veganos"
+      <Segment raised id="place_filter">
+        <Form>
+          <Form.Checkbox
+            label="Veganos"
+            name="Vegano"
             onChange={this.onChange}
-            checked={this.props.placeTypeFilter.indexOf('veganos') !== -1} />
-        </label>
-        <label htmlFor="vegetarianos">Vegetarianos
-          <input
-            type="checkbox"
-            name="vegetarianos"
+            checked={this.props.placeTypeFilter.indexOf('Vegano') !== -1} />
+          <Form.Checkbox
+            label="Vegetarianos"
+            name="Vegetariano"
             onChange={this.onChange}
-            checked={this.props.placeTypeFilter.indexOf('vegetarianos') !== -1} />
-        </label>
-        <label htmlFor="opciones_veganas">Opciones veganas
-          <input
-            type="checkbox"
-            name="opciones_veganas"
+            checked={this.props.placeTypeFilter.indexOf('Vegetariano') !== -1} />
+          <Form.Checkbox
+            label="Opciones veganas"
+            name="Opciones veganas"
             onChange={this.onChange}
-            checked={this.props.placeTypeFilter.indexOf('opciones_veganas') !== -1} />
-        </label>
-      </form>
+            checked={this.props.placeTypeFilter.indexOf('Opciones veganas') !== -1} />
+          <Form.Checkbox
+            label="Tiendas y obradores"
+            name="Tiendas y obradores"
+            onChange={this.onChange}
+            checked={this.props.placeTypeFilter.indexOf('Tiendas y obradores') !== -1} />
+        </Form>
+      </Segment>
     )
   }
 }
