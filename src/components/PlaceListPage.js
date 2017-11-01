@@ -21,7 +21,7 @@ const PlaceListPage = ({places}) => (
             </Item.Meta>
             <Item.Extra>
               <div>{formatDistance(place.distance)}</div>
-              <Label>{place.type}</Label>
+              <Label size="tiny">{place.type}</Label>
             </Item.Extra>
           </Item.Content>
         </Item>

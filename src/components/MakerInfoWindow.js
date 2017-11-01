@@ -8,13 +8,15 @@ import * as actions from '../redux/actions/places'
 
 const MarkerInfoWindow = ({place, deselectPlace}) => (
   <InfoWindow onCloseClick={() => deselectPlace()}>
-    <Item.Group>
+    <Item.Group unstackable>
       <Item>
-        <Item.Image size="tiny" src="http://via.placeholder.com/50x50"/>
+        <Item.Image style={{maxWidth: '50px'}} size="tiny" src="http://via.placeholder.com/50x50"/>
         <Item.Content verticalAlign="middle">
           <Item.Header as={Link}
                        to={`/places/${place.id}`}>{place.name}</Item.Header>
-          <Item.Description>{place.address}</Item.Description>
+          <Item.Meta>
+            {place.address}
+          </Item.Meta>
         </Item.Content>
       </Item>
     </Item.Group>
