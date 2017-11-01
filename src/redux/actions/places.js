@@ -14,6 +14,13 @@ export const selectPlace = (place) => (
   }
 )
 
+export const deselectPlace = () => (
+  {
+    type: SELECT_PLACE,
+    place: null,
+  }
+)
+
 export const setPlaceTypeFilter = (placeTypeFilter) => (
   {
     type: SET_PLACE_TYPE_FILTER,

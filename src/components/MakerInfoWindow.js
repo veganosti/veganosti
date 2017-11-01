@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { InfoWindow } from 'react-google-maps'
 import { Link } from 'react-router-dom'
 import { Item } from 'semantic-ui-react'
+import * as actions from '../redux/actions/places'
 
-const MarkerInfoWindow = ({place}) => (
-  <InfoWindow>
+const MarkerInfoWindow = ({place, deselectPlace}) => (
+  <InfoWindow onCloseClick={() => deselectPlace()}>
     <Item.Group>
       <Item>
         <Item.Image size="tiny" src="http://via.placeholder.com/50x50"/>
@@ -24,6 +26,13 @@ MarkerInfoWindow.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  deselectPlace: PropTypes.func.isRequired
 }
 
-export default MarkerInfoWindow;
+function mapDispatchToProps(dispatch) {
+  return {
+    'deselectPlace': () => dispatch(actions.deselectPlace())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(MarkerInfoWindow);

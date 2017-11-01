@@ -13,7 +13,7 @@ export default (state = {}, action = {}) => {
     case SELECT_PLACE:
       return {
         ...state,
-        selectedPlaceId: action.place.id
+        selectedPlaceId: action.place ? action.place.id : null
       }
     case SET_PLACE_TYPE_FILTER:
       return {
