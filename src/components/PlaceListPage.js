@@ -2,26 +2,31 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Container, List, Image } from 'semantic-ui-react'
+import { Container, Item, Label } from 'semantic-ui-react'
 import { placesSortedByProximity } from '../redux/selectors/places'
 import { formatDistance } from '../utils/formatters'
 
 const PlaceListPage = ({places}) => (
   <Container text>
-    <List divided relaxed>
+    <Item.Group divided unstackable>
       {places.map(place => (
-        <List.Item key={place.id}>
-          <Image src="http://via.placeholder.com/75x75"/>
-          <List.Content verticalAlign="middle">
-            <List.Header as={Link}
-                         to={`/places/${place.id}`}>{place.name}</List.Header>
-            <List.Description>
-              {place.address} <strong>{formatDistance(place.distance)}</strong>
-            </List.Description>
-          </List.Content>
-        </List.Item>
+        <Item key={place.id}>
+          <Item.Image style={{maxWidth: '75px'}} size="tiny" src="http://via.placeholder.com/75x75"/>
+
+          <Item.Content verticalAlign="middle">
+            <Item.Header as={Link}
+                         to={`/places/${place.id}`}>{place.name}</Item.Header>
+            <Item.Meta>
+              {place.address}
+            </Item.Meta>
+            <Item.Extra>
+              <div>{formatDistance(place.distance)}</div>
+              <Label>{place.type}</Label>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
       ))}
-    </List>
+    </Item.Group>
   </Container>
 )
 
