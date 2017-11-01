@@ -12,12 +12,11 @@ const App = () => (
     <Menu>
       <Container>
         <Menu.Item as={Link} to="/">Veganosti</Menu.Item>
-        <Menu.Item as={Link} to="/map">Mapa</Menu.Item>
       </Container>
     </Menu>
-    <Route path="/" exact component={PlaceListPage}/>
-    <Route path="/map" exact component={MapPage}/>
-    <Route path="/detail/:id" exact component={PlaceDetailPage}/>
+    <Route path="/" exact component={MapPage}/>
+    <Route path="/places" exact component={PlaceListPage}/>
+    <Route path="/places/:id" exact component={PlaceDetailPage}/>
   </div>
 )
 

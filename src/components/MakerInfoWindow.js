@@ -11,7 +11,7 @@ const MarkerInfoWindow = ({place}) => (
         <Item.Image size="tiny" src="http://via.placeholder.com/50x50"/>
         <Item.Content verticalAlign="middle">
           <Item.Header as={Link}
-                       to={`detail/${place.id}`}>{place.name}</Item.Header>
+                       to={`/places/${place.id}`}>{place.name}</Item.Header>
           <Item.Description>{place.address}</Item.Description>
         </Item.Content>
       </Item>
