@@ -2,23 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Container, Item } from 'semantic-ui-react'
+import { Container, List, Image } from 'semantic-ui-react'
+import { placesSortedByProximity } from '../redux/selectors/places'
+import { formatDistance } from '../utils/formatters'
 
 const PlaceListPage = ({places}) => (
-  <Container>
-    <Item.Group divided>
+  <Container text>
+    <List divided relaxed>
       {places.map(place => (
-        <Item key={place.id}>
-          <Item.Image size="tiny"
-                      src="https://semantic-ui.com/images/wireframe/image.png"/>
-          <Item.Content verticalAlign="middle">
-            <Item.Header as={Link}
-                         to={`/places/${place.id}`}>{place.name}</Item.Header>
-            <Item.Description>{place.address}</Item.Description>
-          </Item.Content>
-        </Item>
+        <List.Item key={place.id}>
+          <Image src="http://via.placeholder.com/75x75"/>
+          <List.Content verticalAlign="middle">
+            <List.Header as={Link}
+                         to={`/places/${place.id}`}>{place.name}</List.Header>
+            <List.Description>
+              {place.address} <strong>{formatDistance(place.distance)}</strong>
+            </List.Description>
+          </List.Content>
+        </List.Item>
       ))}
-    </Item.Group>
+    </List>
   </Container>
 )
 
@@ -28,13 +31,14 @@ PlaceListPage.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       address: PropTypes.string.isRequired,
+      distance: PropTypes.number
     }).isRequired
   ).isRequired,
 }
 
 function mapStateToProps (state) {
   return {
-    places: state.places,
+    places: placesSortedByProximity(state),
   }
 }
 

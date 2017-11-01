@@ -12,6 +12,7 @@ const App = () => (
     <Menu>
       <Container>
         <Menu.Item as={Link} to="/">Veganosti</Menu.Item>
+        <Menu.Item as={Link} to="/places">Lista</Menu.Item>
       </Container>
     </Menu>
     <Route path="/" exact component={MapPage}/>

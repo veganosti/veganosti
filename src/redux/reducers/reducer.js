@@ -1,6 +1,6 @@
 import {
   SELECT_PLACE, SET_PLACE_TYPE_FILTER,
-  SET_PLACES,
+  SET_PLACES, SET_USER_GEOLOCATION,
 } from '../actions/types'
 
 export default (state = {}, action = {}) => {
@@ -19,6 +19,11 @@ export default (state = {}, action = {}) => {
       return {
         ...state,
         placeTypeFilter: action.placeTypeFilter,
+      }
+    case SET_USER_GEOLOCATION:
+      return {
+        ...state,
+        geolocation: action.geolocation,
       }
     default:
       return state
