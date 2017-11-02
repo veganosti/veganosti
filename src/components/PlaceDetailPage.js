@@ -9,7 +9,9 @@ const PlaceDetailPage = ({places, match}) => {
   return (
     <Container text>
       <Header>{place.name}</Header>
-      <Image fluid src="http://via.placeholder.com/350x150"/>
+      <a href={`https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}`} target="_blank">
+        <Image fluid src={`https://maps.googleapis.com/maps/api/staticmap?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&size=700x300&zoom=18&markers=${place.lat},${place.lng}`} />
+      </a>
       <div>{place.description}</div>
       <div>{place.address}</div>
       <div>{place.phone}</div>
