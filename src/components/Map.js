@@ -14,7 +14,7 @@ const Map = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={15}
     defaultCenter={{lat: 43.322451, lng: -1.9740237}}
-    defaultOptions={{disableDefaultUI: true}}
+    defaultOptions={{disableDefaultUI: true, gestureHandling: 'greedy'}}
   >
     {props.places.map(place => (
       <MapMarker key={place.id} place={place}/>
