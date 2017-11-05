@@ -1,25 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withStyles } from 'material-ui'
+import Card, { CardContent, CardActions } from 'material-ui/Card'
+import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
 import { InfoWindow } from 'react-google-maps'
 import { Link } from 'react-router-dom'
-import { Item } from 'semantic-ui-react'
 import * as actions from '../redux/actions/places'
 
-const MarkerInfoWindow = ({place, deselectPlace}) => (
+const styles = {
+  card: {
+    maxWidth: 250,
+  }
+};
+
+const MarkerInfoWindow = ({place, deselectPlace, classes}) => (
   <InfoWindow onCloseClick={() => deselectPlace()}>
-    <Item.Group unstackable>
-      <Item>
-        <Item.Image style={{maxWidth: '50px'}} size="tiny" src="http://via.placeholder.com/50x50"/>
-        <Item.Content verticalAlign="middle">
-          <Item.Header as={Link}
-                       to={`/places/${place.id}`}>{place.name}</Item.Header>
-          <Item.Meta>
-            {place.address}
-          </Item.Meta>
-        </Item.Content>
-      </Item>
-    </Item.Group>
+    <Card className={classes.card}>
+      <CardContent>
+        <Typography type="headline" component="h2">
+          {place.name}
+        </Typography>
+        <Typography component="p">
+          {place.address}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button dense color="primary" component={Link} to={`/places/${place.id}`}>
+          Más información
+        </Button>
+        <Button dense color="primary">
+          Cómo llegar
+        </Button>
+      </CardActions>
+    </Card>
   </InfoWindow>
 );
 
@@ -28,7 +43,10 @@ MarkerInfoWindow.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
-  deselectPlace: PropTypes.func.isRequired
+  deselectPlace: PropTypes.func.isRequired,
+  classes: PropTypes.shape({
+    card: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 function mapDispatchToProps(dispatch) {
@@ -37,4 +55,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(MarkerInfoWindow);
+export default connect(null, mapDispatchToProps)(withStyles(styles)(MarkerInfoWindow));
