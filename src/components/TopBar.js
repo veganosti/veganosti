@@ -15,17 +15,13 @@ const styles = () => ({
   },
   flex: {
     flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
+  }
 });
 
 function TopBar({classes}) {
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <Typography type="title" color="inherit" className={classes.flex}>
             Veganosti

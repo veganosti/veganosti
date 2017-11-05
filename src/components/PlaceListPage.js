@@ -20,7 +20,7 @@ const PlaceListPage = ({ places, classes }) => (
     <List>
       {places.map(place => (
         <ListItem key={place.id} button component={Link} to={`/places/${place.id}`}>
-          <img src="http://via.placeholder.com/75x75" alt="placeholder" />
+          <img src="http://via.placeholder.com/75x75" alt="p" />
           <ListItemText primary={place.name} secondary={formatDistance(place.distance)} />
         </ListItem>
       ))}

@@ -10,7 +10,10 @@ import PlaceFilter from './PlaceFilter'
 const styles = () => ({
   filterButton: {
     position: 'fixed',
-    right: 0,
+    top: 80,
+    right: 10,
+    width: 36,
+    height: 36,
     zIndex: 10,
   }
 })
@@ -36,7 +39,7 @@ class MapPage extends Component
         </Button>
         <Map
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=geometry,drawing,places`}
-          containerElement={<div id="map" style={{height: `93vh`}}/>}
+          containerElement={<div id="map" style={{height: `100vh`}}/>}
           loadingElement={<div style={{height: `100%`}}/>}
           mapElement={<div style={{height: `100%`}}/>}
         />
