@@ -24,12 +24,6 @@ const PlaceListPage = ({ places, classes }) => (
           <ListItemText primary={place.name} secondary={formatDistance(place.distance)} />
         </ListItem>
       ))}
-      <ListItem button>
-        <ListItemText primary="Trash" />
-      </ListItem>
-      <ListItem button component="a" href="#simple-list">
-        <ListItemText primary="Spam" />
-      </ListItem>
     </List>
   </div>
 )
