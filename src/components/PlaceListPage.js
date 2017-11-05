@@ -1,33 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withStyles } from 'material-ui'
+import List, { ListItem, ListItemText } from 'material-ui/List'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Container, Item, Label } from 'semantic-ui-react'
 import { placesSortedByProximity } from '../redux/selectors/places'
 import { formatDistance } from '../utils/formatters'
 
-const PlaceListPage = ({places}) => (
-  <Container text>
-    <Item.Group divided unstackable>
-      {places.map(place => (
-        <Item key={place.id}>
-          <Item.Image style={{maxWidth: '75px'}} size="tiny" src="http://via.placeholder.com/75x75"/>
+const styles = theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    background: theme.palette.background.paper,
+  },
+});
 
-          <Item.Content verticalAlign="middle">
-            <Item.Header as={Link}
-                         to={`/places/${place.id}`}>{place.name}</Item.Header>
-            <Item.Meta>
-              {place.address}
-            </Item.Meta>
-            <Item.Extra>
-              <div>{formatDistance(place.distance)}</div>
-              <Label size="tiny">{place.type}</Label>
-            </Item.Extra>
-          </Item.Content>
-        </Item>
+const PlaceListPage = ({ places, classes }) => (
+  <div className={classes.root}>
+    <List>
+      {places.map(place => (
+        <ListItem key={place.id} button component={Link} to={`/places/${place.id}`}>
+          <img src="http://via.placeholder.com/75x75" alt="placeholder" />
+          <ListItemText primary={place.name} secondary={formatDistance(place.distance)} />
+        </ListItem>
       ))}
-    </Item.Group>
-  </Container>
+      <ListItem button>
+        <ListItemText primary="Trash" />
+      </ListItem>
+      <ListItem button component="a" href="#simple-list">
+        <ListItemText primary="Spam" />
+      </ListItem>
+    </List>
+  </div>
 )
 
 PlaceListPage.propTypes = {
@@ -39,6 +43,9 @@ PlaceListPage.propTypes = {
       distance: PropTypes.number
     }).isRequired
   ).isRequired,
+  classes: PropTypes.shape({
+    root: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 function mapStateToProps (state) {
@@ -47,4 +54,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(PlaceListPage)
+export default connect(mapStateToProps)(withStyles(styles)(PlaceListPage))
