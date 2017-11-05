@@ -1,48 +1,97 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Segment, Form } from 'semantic-ui-react'
+import { withStyles } from 'material-ui'
+import List, { ListItem, ListItemText } from 'material-ui/List'
+import Checkbox from 'material-ui/Checkbox'
+import Paper from 'material-ui/Paper'
 import { connect } from 'react-redux'
 import { setPlaceTypeFilter } from '../redux/actions/places'
 
+const placeFilterStyle = {
+  position: 'fixed',
+  top: 120,
+  right: 0,
+  zIndex: 11,
+  background: '#FFFFFF'
+}
+
+const styles = () => ({
+
+});
+
 class PlaceFilter extends Component {
 
-  onChange = (e, { name }) => {
+  handleToggle = value => () => {
     const placeTypeFilter = this.props.placeTypeFilter.concat();
-    const index = placeTypeFilter.indexOf(name);
+    const index = placeTypeFilter.indexOf(value);
     if (index !== -1) {
       placeTypeFilter.splice(index, 1);
     } else {
-      placeTypeFilter.push(name);
+      placeTypeFilter.push(value);
     }
     this.props.setPlaceTypeFilter(placeTypeFilter)
   };
 
   render () {
+    const classes = this.props;
+
     return (
-      <Segment raised id="place_filter">
-        <Form>
-          <Form.Checkbox
-            label="Veganos"
-            name="Vegano"
-            onChange={this.onChange}
-            checked={this.props.placeTypeFilter.indexOf('Vegano') !== -1} />
-          <Form.Checkbox
-            label="Vegetarianos"
-            name="Vegetariano"
-            onChange={this.onChange}
-            checked={this.props.placeTypeFilter.indexOf('Vegetariano') !== -1} />
-          <Form.Checkbox
-            label="Opciones veganas"
-            name="Opciones veganas"
-            onChange={this.onChange}
-            checked={this.props.placeTypeFilter.indexOf('Opciones veganas') !== -1} />
-          <Form.Checkbox
-            label="Tiendas y obradores"
-            name="Tiendas y obradores"
-            onChange={this.onChange}
-            checked={this.props.placeTypeFilter.indexOf('Tiendas y obradores') !== -1} />
-        </Form>
-      </Segment>
+      <Paper style={placeFilterStyle}>
+        <List>
+          <ListItem
+            dense
+            button
+            className={classes.listItem}
+            onClick={this.handleToggle('Vegano')}
+          >
+            <Checkbox
+              checked={this.props.placeTypeFilter.indexOf('Vegano') !== -1}
+              tabIndex={-1}
+              disableRipple
+            />
+            <ListItemText primary="Veganos" />
+          </ListItem>
+          <ListItem
+            dense
+            button
+            className={classes.listItem}
+            onClick={this.handleToggle('Vegetariano')}
+          >
+            <Checkbox
+              checked={this.props.placeTypeFilter.indexOf('Vegetariano') !== -1}
+              tabIndex={-1}
+              disableRipple
+            />
+            <ListItemText primary="Vegetarianos" />
+          </ListItem>
+          <ListItem
+            dense
+            button
+            className={classes.listItem}
+            onClick={this.handleToggle('Opciones veganas')}
+          >
+            <Checkbox
+              checked={this.props.placeTypeFilter.indexOf('Opciones veganas') !== -1}
+              tabIndex={-1}
+              disableRipple
+            />
+            <ListItemText primary="Opciones veganas" />
+          </ListItem>
+          <ListItem
+            dense
+            button
+            className={classes.listItem}
+            onClick={this.handleToggle('Tiendas y obradores')}
+          >
+            <Checkbox
+              checked={this.props.placeTypeFilter.indexOf('Tiendas y obradores') !== -1}
+              tabIndex={-1}
+              disableRipple
+            />
+            <ListItemText primary="Tiendas y obradores" />
+          </ListItem>
+        </List>
+      </Paper>
     )
   }
 }
@@ -64,4 +113,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlaceFilter)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(PlaceFilter))
