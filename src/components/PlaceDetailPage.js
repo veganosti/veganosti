@@ -9,6 +9,9 @@ import PhoneIcon from 'material-ui-icons/Phone';
 import DirectionsIcon from 'material-ui-icons/Directions';
 
 const styles = () => ({
+  root: {
+    paddingTop: 56
+  },
   media: {
     height: 194,
   },
@@ -18,8 +21,8 @@ const PlaceDetailPage = ({places, match, classes}) => {
   const place = places[match.params.id - 1]
 
   return (
-    <div>
-      <Card className={classes.card}>
+    <div className={classes.root}>
+      <Card elevation="0" className={classes.card}>
         <CardMedia
           className={classes.media}
           image={`https://maps.googleapis.com/maps/api/staticmap?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&size=700x300&zoom=18&markers=${place.lat},${place.lng}`}
@@ -72,7 +75,10 @@ PlaceDetailPage.propTypes = {
       address: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.shape({
+    root: PropTypes.string.isRequired,
+    media: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 function mapStateToProps (state) {

@@ -3,5 +3,5 @@ export const formatDistance = (distance) => {
     return '';
   }
 
-  return (Math.round(distance * 100) / 100).toString() + ' km'
+  return (Math.round(distance * 10) / 10).toString() + ' km'
 }
