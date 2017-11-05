@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import MapIcon from 'material-ui-icons/Map';
+import ListIcon from 'material-ui-icons/List';
 
 const styles = () => ({
   root: {
@@ -27,7 +30,12 @@ function TopBar({classes}) {
           <Typography type="title" color="inherit" className={classes.flex}>
             Veganosti
           </Typography>
-          <Button color="contrast">Login</Button>
+          <IconButton color="contrast" component={Link} to="/">
+            <MapIcon/>
+          </IconButton>
+          <IconButton color="contrast" component={Link} to="/places">
+            <ListIcon/>
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>
@@ -35,7 +43,10 @@ function TopBar({classes}) {
 }
 
 TopBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.shape({
+    root: PropTypes.string.isRequired,
+    flex: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default withStyles(styles)(TopBar);
