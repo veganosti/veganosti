@@ -11,6 +11,7 @@ import Divider from 'material-ui/Divider';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import MapIcon from 'material-ui-icons/Map';
+import HomeIcon from 'material-ui-icons/Home';
 import ListIcon from 'material-ui-icons/List';
 import BackIcon from 'material-ui-icons/KeyboardBackspace';
 import MenuIcon from 'material-ui-icons/Menu';
@@ -80,9 +81,18 @@ class TopBar extends Component {
           </Toolbar>
         </AppBar>
         <Drawer open={this.state.drawerOpen} onRequestClose={() => this.toggleDrawer(false)}>
-          <div>
+          <div tabIndex={0}
+               role="button"
+               onClick={() => this.toggleDrawer(false)}
+               onKeyDown={() => this.toggleDrawer(false)}>
             <List>
-              <ListItem button>
+              <ListItem button component={Link} to="/">
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Inicio" />
+              </ListItem>
+              <ListItem button component={Link} to="/about">
                 <ListItemIcon>
                   <InfoIcon />
                 </ListItemIcon>
