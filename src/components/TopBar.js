@@ -119,7 +119,7 @@ class TopBar extends Component {
             </List>
             <Divider />
             <List>
-              <ListItem button>
+              <ListItem button component={Link} to="/askekintza">
                 <div>
                   <Typography style={{marginBottom: 5}}>Agradecimientos:</Typography>
                   <img style={{width: 150}} src="http://askekintza.org/wp-content/themes/Askekintza/imagenes/logo.png" alt="Askekintza" />
