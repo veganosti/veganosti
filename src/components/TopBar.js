@@ -35,7 +35,7 @@ class TopBar extends Component {
 
   state = {
     drawerOpen: false
-  }
+  };
 
   toggleDrawer = (open) => {
     this.setState({
@@ -122,7 +122,7 @@ class TopBar extends Component {
               <ListItem button component={Link} to="/askekintza">
                 <div>
                   <Typography style={{marginBottom: 5}}>Agradecimientos:</Typography>
-                  <img style={{width: 150}} src="http://askekintza.org/wp-content/themes/Askekintza/imagenes/logo.png" alt="Askekintza" />
+                  <img style={{width: 150}} src="/img/askekintza.png" alt="Askekintza" />
                 </div>
               </ListItem>
             </List>
