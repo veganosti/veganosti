@@ -1,9 +1,12 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
 
 const AboutPage = () => (
   <Paper>
-    Sobre Veganosti
+    <Typography style={{marginTop: 70}}>
+      Sobre Veganosti
+    </Typography>
   </Paper>
 );
 
