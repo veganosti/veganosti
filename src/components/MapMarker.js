@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Marker } from 'react-google-maps'
 import MarkerInfoWindow from './MakerInfoWindow'
-import * as actions from '../redux/actions/places'
 
 const MapMarker = ({place, selectedPlaceId, selectPlace}) =>(
       <Marker position={{lat: place.lat, lng: place.lng}}
@@ -11,7 +10,7 @@ const MapMarker = ({place, selectedPlaceId, selectPlace}) =>(
               onClick={() => selectPlace(place)}>
         {place.id === selectedPlaceId && <MarkerInfoWindow place={place}/>}
       </Marker>
-    )
+      )
 
 MapMarker.propTypes = {
   place: PropTypes.shape({
@@ -36,10 +35,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    selectPlace: (place) => dispatch(actions.selectPlace(place))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MapMarker)
+export default connect(mapStateToProps)(MapMarker)
