@@ -16,7 +16,6 @@ import ListIcon from 'material-ui-icons/List';
 import BackIcon from 'material-ui-icons/KeyboardBackspace';
 import MenuIcon from 'material-ui-icons/Menu';
 import InfoIcon from 'material-ui-icons/InfoOutline';
-import EmailIcon from 'material-ui-icons/Email';
 
 const styles = () => ({
   root: {
@@ -97,12 +96,6 @@ class TopBar extends Component {
                   <InfoIcon />
                 </ListItemIcon>
                 <ListItemText primary="Sobre Veganosti" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <EmailIcon />
-                </ListItemIcon>
-                <ListItemText primary="Contacto" />
               </ListItem>
             </List>
             <Divider />
