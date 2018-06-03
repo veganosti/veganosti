@@ -107,18 +107,6 @@ class TopBar extends Component {
             </List>
             <Divider />
             <List>
-              <ListItem button>
-                <ListItemText primary="Euskera" />
-              </ListItem>
-              <ListItem button component="a" href="#simple-list">
-                <ListItemText primary="Castellano" />
-              </ListItem>
-              <ListItem button>
-                <ListItemText primary="Inglés" />
-              </ListItem>
-            </List>
-            <Divider />
-            <List>
               <ListItem button component={Link} to="/askekintza">
                 <div>
                   <Typography style={{marginBottom: 5}}>Agradecimientos:</Typography>
