@@ -13,30 +13,34 @@ const styles = theme => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: 675
-  })
+  }),
+
+  textHighlight: {
+    fontWeight: 500
+  }
 });
 
 const AboutPage = ({classes}) => (
   <Paper className={classes.root}>
 
-    <Typography>Sobre Veganosti</Typography>
-
-    <Typography paragraph="true">Veganosti es un proyecto sin ánimo de lucro
-      que nace con el objetivo de facilitar el acceso a productos y servicios
-      veganos y promover el aumento de la oferta vegana en donostialdea.
+    <Typography type="display1" gutterBottom>
+      Sobre <b className={classes.textHighlight}>Vegan</b>osti
     </Typography>
 
-    <Typography paragraph="true">Si bien sabemos que la liberación animal y el
-      fin del especismo no se conseguirá a traves del consumo, creemos que este
-      humilde espacio puede ser una fuente de información útil y puede ayudar
-      a promover una oferta vegana más amplia.</Typography>
+    <Typography type="title" gutterBottom>Objetivos</Typography>
 
-    <Typography>Aviso legal</Typography>
+    <Typography paragraph><b className={classes.textHighlight}>Vegan</b>osti es un
+      proyecto sin ánimo de lucro que nace con el objetivo de facilitar el
+      acceso a productos y servicios veganos y promover el aumento de la oferta
+      vegana en donostialdea.
+    </Typography>
 
-    <Typography paragraph="true">La navegación en esta web es privada, no
-      utilizamos cookies y tu información nunca será almacenada, explotada ni
-      proporcionada a terceros. En definitiva, al contrario que en la mayor
-      parte de la web, te encuentras en un espacio seguro para tu privacidad.
+    <Typography type="title" gutterBottom>Política de privacidad</Typography>
+
+    <Typography paragraph>La navegación en esta web es privada, no
+      utilizamos cookies y no almacenamos, explotamos o proporcionamos a
+      terceros ninguna información que facilites mientras navegas por este
+      espacio.
     </Typography>
   </Paper>
 );
