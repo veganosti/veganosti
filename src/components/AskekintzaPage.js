@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography'
+import ExternalLink from './ExternalLink';
 
 const styles = theme => ({
 
@@ -29,7 +30,7 @@ const AskekintzaPage = ({classes}) => (
     <img className={classes.logo} src="/img/askekintza.png" alt="Askekintza" />
 
     <Typography paragraph>
-      <a href="http://askekintza.org" target="_blank">Askekintza</a> es una
+      <ExternalLink href="http://askekintza.org">Askekintza</ExternalLink> es una
       organización que lucha por la
       liberación animal y el fin del especismo en Donostia y alrededores.
       Esta organización realizó una guía vegana de Donostia
@@ -47,11 +48,11 @@ const AskekintzaPage = ({classes}) => (
 
     <Typography>
       <ul>
-        <li><a href="http://askekintza.org" target="_blank">Askekintza.org</a></li>
-        <li><a href="https://twitter.com/askekintza" target="_blank">Twitter</a></li>
-        <li><a href="https://www.facebook.com/askekintza" target="_blank">Facebook</a></li>
-        <li><a href="https://www.youtube.com/user/Liberacionaskekintza" target="_blank">Youtube</a></li>
-        <li><a href="https://www.instagram.com/askekintza/" target="_blank">Instagram</a></li>
+        <li><ExternalLink href="http://askekintza.org">Askekintza.org</ExternalLink></li>
+        <li><ExternalLink href="https://twitter.com/askekintza">Twitter</ExternalLink></li>
+        <li><ExternalLink href="https://www.facebook.com/askekintza">Facebook</ExternalLink></li>
+        <li><ExternalLink href="https://www.youtube.com/user/Liberacionaskekintza">Youtube</ExternalLink></li>
+        <li><ExternalLink href="https://www.instagram.com/askekintza/">Instagram</ExternalLink></li>
       </ul>
     </Typography>
   </Paper>
