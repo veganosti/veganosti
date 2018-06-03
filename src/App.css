@@ -1,3 +1,7 @@
+html {
+  background: #f0f0f0;
+}
+
 #place_filter {
   position: fixed;
   bottom: 40px;
