@@ -28,29 +28,30 @@ const AskekintzaPage = ({classes}) => (
   <Paper className={classes.root}>
     <img className={classes.logo} src="/img/askekintza.png" alt="Askekintza" />
 
-    <Typography paragraph="true">Askekintza es una asociación sin ánimo de lucro
-      que lucha por la liberación animal y el fin del especismo, visibilizando
-      la explotación y opresión que sufren los animales no humanos en
-      Donostialdea.</Typography>
+    <Typography paragraph>
+      <a href="http://askekintza.org" target="_blank">Askekintza</a> es una
+      organización que lucha por la
+      liberación animal y el fin del especismo en Donostia y alrededores.
+      Esta organización realizó una guía vegana de Donostia
+      en PDF, que ha sido la base para contruir este
+      espacio.
+    </Typography>
 
-    <Typography paragraph="true">Veganosti se ha construido gracias a la
-      información recopilada por Askekintza, por lo que, sin su labor previa,
-      Veganosti no hubiera podido ser una realidad. Desde este pequeño espacio
-      queremos agradecer la cesión de la información y sobre todo la lucha
-      diaria tan necesaria realizada por sus activistas.</Typography>
+    <Typography paragraph>Desde aquí queremos agradecer a Askekintza habernos
+      cedido esta información, y sobre todo agradecerles la lucha diaria realizada
+      por sus activistas para acabar con la explotación animal.</Typography>
 
-    <Typography paragraph="true">Si quieres conocer más sobre el Askekintza así
-      como apoyar su actividad, puedes obtener más información en su web y
+    <Typography paragraph>Si quieres conocer más sobre Askekintza así como
+      apoyar su actividad, puedes obtener más información en su web y
       redes sociales:</Typography>
 
     <Typography>
       <ul>
-        <li><a href="http://askekintza.org">askekintza.org</a></li>
-        <li><a href="https://twitter.com/askekintza">Twitter</a></li>
-        <li><a href="https://www.facebook.com/askekintza">Facebook</a></li>
-        <li><a href="https://www.youtube.com/user/Liberacionaskekintza">Youtube</a></li>
-        <li><a href="https://www.instagram.com/askekintza/">Instagram</a></li>
-        <li><a href="mailto:askekintza@riseup.net">askekintza@riseup.net</a></li>
+        <li><a href="http://askekintza.org" target="_blank">Askekintza.org</a></li>
+        <li><a href="https://twitter.com/askekintza" target="_blank">Twitter</a></li>
+        <li><a href="https://www.facebook.com/askekintza" target="_blank">Facebook</a></li>
+        <li><a href="https://www.youtube.com/user/Liberacionaskekintza" target="_blank">Youtube</a></li>
+        <li><a href="https://www.instagram.com/askekintza/" target="_blank">Instagram</a></li>
       </ul>
     </Typography>
   </Paper>
