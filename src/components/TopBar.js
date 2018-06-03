@@ -64,7 +64,7 @@ class TopBar extends Component {
             )}
             {!isDetailPage && (
               <Typography type="title" color="inherit" className={classes.flex}>
-                Veganosti
+                <b>Vegan</b>osti
               </Typography>
             )}
             {location.pathname === '/places' && (
