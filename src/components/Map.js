@@ -11,6 +11,7 @@ import {
   filteredPlacesSelector,
 } from '../redux/selectors/places'
 import * as actions from '../redux/actions/places';
+import mapStyles from '../map-styles.json'
 
 class Map extends React.Component {
 
@@ -27,7 +28,11 @@ class Map extends React.Component {
         ref={map => {this.map = map}}
         defaultZoom={15}
         defaultCenter={{lat: 43.322451, lng: -1.9740237}}
-        defaultOptions={{disableDefaultUI: true, gestureHandling: 'greedy'}}
+        defaultOptions={{
+          disableDefaultUI: true,
+          gestureHandling: 'greedy',
+          styles: mapStyles
+        }}
     >
       {this.props.places.map(place => (
           <MapMarker key={place.id} place={place} selectPlace={(p) => this.selectPlace(p)}/>
