@@ -7,12 +7,14 @@ import MapPage from './components/MapPage'
 import TopBar from './components/TopBar'
 import AboutPage from './components/AboutPage'
 import AskekintzaPage from './components/AskekintzaPage'
+import ContactPage from './components/ContactPage'
 
 const App = () => (
   <div>
     <TopBar />
     <Route path="/" exact component={MapPage}/>
     <Route path="/about" exact component={AboutPage}/>
+    <Route path="/contact" exact component={ContactPage}/>
     <Route path="/askekintza" exact component={AskekintzaPage}/>
     <Route path="/places" exact component={PlaceListPage}/>
     <Route path="/places/:id" exact component={PlaceDetailPage}/>

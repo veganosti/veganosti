@@ -98,7 +98,7 @@ class TopBar extends Component {
                 </ListItemIcon>
                 <ListItemText primary="Sobre Veganosti" />
               </ListItem>
-              <ListItem button>
+              <ListItem button component={Link} to="/contact">
                 <ListItemIcon>
                   <EmailIcon />
                 </ListItemIcon>
